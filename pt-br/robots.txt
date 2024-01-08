@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://carljohanrehn.github.io/levande-landskap/pt-br/sitemap.xml
