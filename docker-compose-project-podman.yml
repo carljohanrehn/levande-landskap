@@ -1,0 +1,47 @@
+# podman image build...
+# podman image build --no-cache --format docker -f Containerfile-project-sv -t al-folio-project .
+# podman image build --format docker -f Containerfile-project-sv -t al-folio-project .
+
+# podman rootless...
+# ls -al
+# podman unshare ls -al /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# podman unshare chown 1000:1000 -R /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+
+# podman unshare ls -al /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# sudo chown alpha:alpha -R /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# podman unshare ls -al /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# ls -al
+
+# podman compose...
+# podman unshare chown 1000:1000 -R /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# podman-compose -f docker-compose-project-podman.yml up
+# podman container rm al-folio-website
+
+# podman exec...
+# podman exec -it 13ab0f32ffe0 /bin/bash
+
+# podman container  run...
+# podman container run -it 8f97b35e5316 /bin/bash
+
+
+# podman-compose -f docker-compose-project-podman.yml up
+
+version: "3"
+# this file uses prebuilt image in dockerhub
+services:
+  jekyll:
+#    image: al-folio-project
+#    image: pypak-jekyll-srv:v2
+    image: pypak-jekyll-srv:v3
+#    container_name: al-folio-website
+    container_name: levande-landskap
+    command: bash -c "
+      rm -f Gemfile.lock
+      && bundler exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace"
+    ports:
+      - 8080:8080
+    volumes:
+      - ../../..:/home/app/project:Z  # Note: PyCharm maps '.' to /opt/project/ with environment variable IDE_PROJECT_ROOTS
+      - .:/home/app/srv/jekyll:Z
+#    environment:
+#      - JEKYLL_ROOTLESS=1  # https://github.com/envygeeks/jekyll-docker/blob/master/README.md
