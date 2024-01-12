@@ -1,21 +1,21 @@
 # podman image build...
-# podman image build --no-cache --format docker -f Containerfile-project-sv -t al-folio-project .
-# podman image build --format docker -f Containerfile-project-sv -t al-folio-project .
+# podman image build --no-cache --format docker -f Containerfile-pypak-jekyll-srv -t pypak-jekyll-srv .
+# podman image build --format docker -f Containerfile-pypak-jekyll-srv -t pypak-jekyll-srv .
 
 # podman rootless...
 # ls -al
-# podman unshare ls -al /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
-# podman unshare chown 1000:1000 -R /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# podman unshare ls -al .
+# podman unshare chown 1000:1000 -R .
 
-# podman unshare ls -al /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
-# sudo chown alpha:alpha -R /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
-# podman unshare ls -al /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# podman unshare ls -al .
+# sudo chown alpha:alpha -R .
+# podman unshare ls -al .
 # ls -al
 
 # podman compose...
-# podman unshare chown 1000:1000 -R /home/alpha/my-pak/cross-python-development/torch-app-docker/jekyll/docker/fries-al-folio
+# podman unshare chown 1000:1000 -R .
 # podman-compose -f docker-compose-project-podman.yml up
-# podman container rm al-folio-website
+# podman container rm levande-landskap
 
 # podman exec...
 # podman exec -it 13ab0f32ffe0 /bin/bash
@@ -23,17 +23,13 @@
 # podman container  run...
 # podman container run -it 8f97b35e5316 /bin/bash
 
-
 # podman-compose -f docker-compose-project-podman.yml up
 
 version: "3"
 # this file uses prebuilt image in dockerhub
 services:
   jekyll:
-#    image: al-folio-project
-#    image: pypak-jekyll-srv:v2
     image: pypak-jekyll-srv:v3
-#    container_name: al-folio-website
     container_name: levande-landskap
     command: bash -c "
       rm -f Gemfile.lock
