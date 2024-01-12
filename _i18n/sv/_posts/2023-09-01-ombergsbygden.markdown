@@ -13,7 +13,7 @@ Till Hov, till Tåkern och Ombergsbygden går från Skänninge en ur gammal land
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Tåkern-10-wtrpxl.jpg" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/tåkern-10-wtrpxl.jpg" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
