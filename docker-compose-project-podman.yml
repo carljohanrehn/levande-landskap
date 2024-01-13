@@ -26,7 +26,6 @@
 # podman-compose -f docker-compose-project-podman.yml up
 
 version: "3"
-# this file uses prebuilt image in dockerhub
 services:
   jekyll:
     image: pypak-jekyll-srv:v3
@@ -37,7 +36,4 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ../../..:/home/app/project:Z  # Note: PyCharm maps '.' to /opt/project/ with environment variable IDE_PROJECT_ROOTS
       - .:/home/app/srv/jekyll:Z
-#    environment:
-#      - JEKYLL_ROOTLESS=1  # https://github.com/envygeeks/jekyll-docker/blob/master/README.md
