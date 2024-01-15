@@ -25,14 +25,40 @@
 
 # podman-compose -f docker-compose-project-podman.yml up
 
+#---
+
+# podman unshare chown 1000:1000 -R .
+# podman unshare ls -al
+
+# podman-compose -f docker-compose-project-podman.yml up posts
+# podman-compose -f docker-compose-project-podman.yml down posts
+
+# podman-compose -f docker-compose-project-podman.yml up drafts
+# podman-compose -f docker-compose-project-podman.yml down drafts
+
+# sudo chown alpha:alpha -R .
+# ls -al
+
+#---
+
 version: "3"
 services:
-  jekyll:
+  posts:
     image: pypak-jekyll-srv:v3
-    container_name: levande-landskap
+    container_name: levande-landskap-posts
     command: bash -c "
       rm -f Gemfile.lock
       && bundler exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace"
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/home/app/srv/jekyll:Z
+  drafts:
+    image: pypak-jekyll-srv:v3
+    container_name: levande-landskap-drafts
+    command: bash -c "
+      rm -f Gemfile.lock
+      && bundler exec jekyll serve --drafts --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace"
     ports:
       - 8080:8080
     volumes:

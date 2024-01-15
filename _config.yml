@@ -151,11 +151,20 @@ disqus_shortname: multi-language-al-folio # put your disqus shortname
 #  - name: medium.com
 #    rss_url: https://medium.com/@al-folio/feed
 
+
+# -----------------------------------------------------------------------------
+# Drafts, enable serving drafts by default
+# -----------------------------------------------------------------------------
+
+# show_drafts: true
+
 # -----------------------------------------------------------------------------
 # Collections
 # -----------------------------------------------------------------------------
 
 collections:
+#  drafts:
+#    output: true
   news:
     defaults:
       layout: post
